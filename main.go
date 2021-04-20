@@ -55,19 +55,19 @@ type QuestionItem struct {
 	IncorrectAnswers []string `json:"incorrect_answers"`
 }
 
-var clear map[string]func() 									// create a map for storing clear functions
+var clear map[string]func() // create a map for storing clear functions
 
 func init() {
-	clear = make(map[string]func()) 							// Initialize it
+	clear = make(map[string]func()) // Initialize it
 	clear["linux"] = func() {
-		cmd := exec.Command("clear") 							// Linux example, its tested
+		cmd := exec.Command("clear") // Linux example, its tested
 		cmd.Stdout = os.Stdout
 		if err := cmd.Run(); err != nil {
 			log.Fatal(err)
 		}
 	}
 	clear["windows"] = func() {
-		cmd := exec.Command("cmd", "/c", "cls") 				// Windows example, its tested
+		cmd := exec.Command("cmd", "/c", "cls") // Windows example, its tested
 		cmd.Stdout = os.Stdout
 		if err := cmd.Run(); err != nil {
 			log.Fatal(err)
@@ -76,10 +76,10 @@ func init() {
 }
 
 func clearScreen() {
-	value, ok := clear[runtime.GOOS] 							// runtime.GOOS -> linux, windows, darwin etc.
-	if ok {                         							// if we defined a clear func for that platform:
-		value() 					 							// we execute it
-	} else { 						 							// unsupported platform
+	value, ok := clear[runtime.GOOS] // runtime.GOOS -> linux, windows, darwin etc.
+	if ok {                          // if we defined a clear func for that platform:
+		value() // we execute it
+	} else { // unsupported platform
 		panic("OS is unsupported! Can't clear terminal screen")
 	}
 }
@@ -216,7 +216,8 @@ func main() {
 					return errors.New("invalid number")
 				}
 				if inputInt < minQuestionsNumber || inputInt > maxQuestionsNumber {
-					return errors.New("number should be between " + strconv.Itoa(minQuestionsNumber) + " and " + strconv.Itoa(maxQuestionsNumber))
+					return errors.New("number should be between " + strconv.Itoa(minQuestionsNumber) + " and " +
+						strconv.Itoa(maxQuestionsNumber))
 				}
 				return nil
 			}

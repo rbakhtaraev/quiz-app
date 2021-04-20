@@ -11,7 +11,7 @@ Installed go 1.14+ or Docker
 
 ## Used external libs
 
-[promptui](github.com/manifoldco/promptui) - for provide a user-friendly console interface
+[promptui](https://github.com/manifoldco/promptui) - for provide a user-friendly console interface
 
 ## How to run
 If you have preinstalled go 1.14:
